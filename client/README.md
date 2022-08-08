@@ -16,6 +16,8 @@
 - [x] Public Route
     - [x] Login
     - [x] Registration
+- [x] Layout
+    - [x] Layout Structure
 
 ### `npm start`
 
