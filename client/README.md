@@ -7,10 +7,12 @@
     - [x] Import Where It Is Used
 - [x] Bootstrap 4
     - [x] CDN Link
-- [ ] Redux
+- [x] Redux
     - [x] React-Redux
     - [x] Redux
     - [x] Redux-ToolKit
+- [ ] Protected Route
+    - [ ] Home/Index
 
 ### `npm start`
 
