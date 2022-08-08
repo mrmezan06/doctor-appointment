@@ -11,8 +11,11 @@
     - [x] React-Redux
     - [x] Redux
     - [x] Redux-ToolKit
-- [ ] Protected Route
+- [x] Protected Route
     - [ ] Home/Index
+- [x] Public Route
+    - [x] Login
+    - [x] Registration
 
 ### `npm start`
 
