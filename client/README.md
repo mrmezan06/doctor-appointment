@@ -3,10 +3,10 @@
 - [x] React
     - [x] npx
 - [x] AntD
-    - [x] AntD Package
+    - [x] [AntD](https://ant.design/)
     - [x] Import Where It Is Used
 - [x] Bootstrap 4
-    - [x] CDN Link
+    - [x] [CDN Link](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 - [x] Redux
     - [x] React-Redux
     - [x] Redux
@@ -18,6 +18,9 @@
     - [x] Registration
 - [x] Layout
     - [x] Layout Structure
+        - [x] Sidebar Without Collapsing Functionality
+- [x] Remix Icon
+    - [x] [Remix Icon](https://remixicon.com/)
 
 ### `npm start`
 
