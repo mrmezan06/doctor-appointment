@@ -23,6 +23,7 @@
         - [ ] Body
             - [x] Apply Doctor
             - [x] Apply Doctor API
+            - [ ] Notification UI
 
 - [x] Remix Icon
     - [x] [Remix Icon](https://remixicon.com/)
