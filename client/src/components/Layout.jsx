@@ -61,6 +61,8 @@ function Layout({ children }) {
   //   window.location.reload();
   //   c = 0;
   // }
+  // Its always refreshing so I need to find Something Else
+  // That will find out in after Login to refresh the page 
   return (
     <div className="main">
       <div className="d-flex layout">
