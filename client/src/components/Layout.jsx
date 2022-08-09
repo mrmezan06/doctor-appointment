@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../layout.css";
 
 function Layout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
   const {user} = useSelector((state) => state.user);
+  const navigate = useNavigate();
   const location = useLocation();
   const userMenu = [
     {
@@ -27,21 +28,45 @@ function Layout({ children }) {
       name: "Profile",
       path: "/profile",
       icon: "ri-user-line",
-    },
-    {
-      name: "Logout",
-      path: "/logout",
-      icon: "ri-logout-box-r-line",
-    },
+    }
   ];
 
-  const menuTobBeRendered = userMenu;
+  const adminMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-line",
+    },
+    {
+      name: "Users",
+      path: "/users",
+      icon: "ri-user-line",
+    },
+    {
+      name: "Doctors",
+      path: "/doctors",
+      icon: "ri-user-star-line",
+    },
+    {
+      name: "Profile",
+      path: "/profile",
+      icon: "ri-user-line",
+    }
+  ];
+
+  const menuTobBeRendered = user?.isAdmin ? adminMenu : userMenu;
+  // Refresh the page when the user Logs in
+  // var c = 1;
+  // if (location.pathname === "/" && c) {
+  //   window.location.reload();
+  //   c = 0;
+  // }
   return (
     <div className="main">
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
-            <h1>DA</h1>
+            <h1 className="logo">DA</h1>
           </div>
           <div className="menu">
             {menuTobBeRendered.map((menu) => {
@@ -57,6 +82,15 @@ function Layout({ children }) {
                 </div>
               );
             })}
+            <div className="d-flex menu-item" onClick={()=> {
+              localStorage.clear();
+              // localStorage.removeItem("token");
+              navigate("/login");
+            }}>
+              <i className="ri-logout-box-line"></i>
+              {!collapsed && <Link to="/login">Logout</Link>}
+              
+            </div>
           </div>
         </div>
         <div className="content">

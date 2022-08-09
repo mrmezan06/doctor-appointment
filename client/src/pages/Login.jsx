@@ -22,6 +22,8 @@ const Login = () => {
           toast("Redirecting to Home page");
           localStorage.setItem('token', response.data.data);
           navigate('/');
+          // Clear the Cache and Refresh the page
+          window.location.reload();
         }else {
         toast.error(response.data.message);
       }
