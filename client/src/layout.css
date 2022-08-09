@@ -78,6 +78,11 @@
     padding-left: 10px;
 }
 
+.ant-scroll-number-only-unit {
+    padding-left: -10px !important;
+    padding-bottom: -10px !important;
+}
+
 @media screen and (max-width: 768px) {
         .menu{
         padding: 0 5px;

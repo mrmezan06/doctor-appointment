@@ -1,3 +1,4 @@
+import { Badge } from "antd";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -5,7 +6,7 @@ import "../layout.css";
 
 function Layout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const location = useLocation();
   const userMenu = [
@@ -28,7 +29,7 @@ function Layout({ children }) {
       name: "Profile",
       path: "/profile",
       icon: "ri-user-line",
-    }
+    },
   ];
 
   const adminMenu = [
@@ -51,7 +52,7 @@ function Layout({ children }) {
       name: "Profile",
       path: "/profile",
       icon: "ri-user-line",
-    }
+    },
   ];
 
   const menuTobBeRendered = user?.isAdmin ? adminMenu : userMenu;
@@ -62,7 +63,7 @@ function Layout({ children }) {
   //   c = 0;
   // }
   // Its always refreshing so I need to find Something Else
-  // That will find out in after Login to refresh the page 
+  // That will find out in after Login to refresh the page
   return (
     <div className="main">
       <div className="d-flex layout">
@@ -84,14 +85,16 @@ function Layout({ children }) {
                 </div>
               );
             })}
-            <div className="d-flex menu-item" onClick={()=> {
-              localStorage.clear();
-              // localStorage.removeItem("token");
-              navigate("/login");
-            }}>
+            <div
+              className="d-flex menu-item"
+              onClick={() => {
+                localStorage.clear();
+                // localStorage.removeItem("token");
+                navigate("/login");
+              }}
+            >
               <i className="ri-logout-box-line"></i>
               {!collapsed && <Link to="/login">Logout</Link>}
-              
             </div>
           </div>
         </div>
@@ -109,8 +112,12 @@ function Layout({ children }) {
               ></i>
             )}
             <div className="d-flex align-items-center px-4">
-              <i className="ri-notification-line header-action-icon px-3"></i>
-              <Link className="anchor" to="/profile">{user?.name}</Link>
+              <Badge count={user?.unseenNotifications.length}>
+                <i className="ri-notification-line header-action-icon px-1"></i>
+              </Badge>
+              <Link className="anchor mx-3" to="/profile">
+                {user?.name}
+              </Link>
             </div>
           </div>
           <div className="body">{children}</div>

@@ -1,11 +1,40 @@
 import React from "react";
 import Layout from "../components/Layout";
 import { Button, Col, Form, Input, Row, TimePicker } from "antd";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { hideLoading, showLoading } from "../redux/alertsSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 function ApplyDoctor() {
-    const onFinish = (values) => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+  const onFinish = async (values) => {
+    try {
+      dispatch(showLoading());
+      const response = await axios.post("/api/user/apply-doctor-account", {
+        ...values,
+        userId: user._id,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      });
+      dispatch(hideLoading());
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      dispatch(hideLoading());
+      toast.error("Something went wrong");
     }
+  };
   return (
     <Layout>
       <h1 className="page-title">Apply Doctor</h1>
@@ -84,7 +113,7 @@ function ApplyDoctor() {
               name="experience"
               rules={[{ required: true }]}
             >
-              <Input placeholder="Experience" type='number' />
+              <Input placeholder="Experience" type="number" />
             </Form.Item>
           </Col>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -94,7 +123,11 @@ function ApplyDoctor() {
               name="feePerConsultation"
               rules={[{ required: true }]}
             >
-              <Input type="number" step={50} placeholder="Fee Per Consultation" />
+              <Input
+                type="number"
+                step={50}
+                placeholder="Fee Per Consultation"
+              />
             </Form.Item>
           </Col>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -109,7 +142,9 @@ function ApplyDoctor() {
           </Col>
         </Row>
         <div className="d-flex justify-content-end">
-            <Button className="primary-button" htmlType="submit">Submit</Button>
+          <Button className="primary-button" htmlType="submit">
+            Submit
+          </Button>
         </div>
       </Form>
     </Layout>

@@ -20,6 +20,10 @@
     - [x] Layout Structure
         - [x] Sidebar Without Collapsing Functionality
         - [x] Header Complete
+        - [ ] Body
+            - [x] Apply Doctor
+            - [x] Apply Doctor API
+
 - [x] Remix Icon
     - [x] [Remix Icon](https://remixicon.com/)
 
