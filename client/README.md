@@ -19,6 +19,7 @@
 - [x] Layout
     - [x] Layout Structure
         - [x] Sidebar Without Collapsing Functionality
+        - [x] Header Complete
 - [x] Remix Icon
     - [x] [Remix Icon](https://remixicon.com/)
 

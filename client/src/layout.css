@@ -9,8 +9,9 @@
     margin-right: 20px;
     min-height: 100%;
     padding: 10px;
-    width: 300px;
 }
+
+
 
 .content {
     width: 100%;
@@ -23,6 +24,9 @@
     box-shadow: 0 0 2px gray;
     margin-bottom: 20px;
     height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .body {
@@ -35,6 +39,7 @@
 
 .menu {
     margin-top: 100px;
+    padding: 0 10px;
 }
 
 .menu-item {
@@ -59,4 +64,16 @@
     background-color: #013737;
     padding: 5px;
     border-radius: 5px;
+}
+.header-action-icon {
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+        .menu{
+        padding: 0 5px;
+    }
 }
