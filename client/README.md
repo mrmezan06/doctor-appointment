@@ -23,7 +23,11 @@
         - [ ] Body
             - [x] Apply Doctor
             - [x] Apply Doctor API
-            - [ ] Notification UI
+            - [x] Notification UI With Fixing Issues
+            - [x] API for Doctors
+            - [x] API for Users
+            - [ ] UI for Doctors LIST
+            - [ ] UI for Users List
 
 - [x] Remix Icon
     - [x] [Remix Icon](https://remixicon.com/)

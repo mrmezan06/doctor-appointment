@@ -91,7 +91,12 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
       const status = doctor.status;
       return res
         .status(200)
-        .send({ message: `You already have ${status=="approved"?"an":"a"} ${status} doctor account`, success: false });
+        .send({
+          message: `You already have ${
+            status == "approved" ? "an" : "a"
+          } ${status} doctor account`,
+          success: false,
+        });
     }
     // if no then save the doctor account
     await newDoctor.save();
@@ -117,33 +122,29 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
       .send({ message: "Error applying doctor", success: false, error });
   }
 });
-router.post(
-  "/delete-all-notifications",
-  authMiddleware,
-  async (req, res) => {
-    try {
-      const user = await User.findOne({ _id: req.body.userId });
-      user.seenNotifications = [];
-      user.unseenNotifications = [];
-      const updatedUser = await user.save();
-      updatedUser.password = "";
-      res.status(200).send({
-        message: "All notification is deleted",
-        success: true,
-        data: updatedUser,
-      });
-      await User.findByIdAndUpdate(user._id, {
-        unseenNotifications,
-        seenNotifications,
-      });
-    } catch (error) {
-      console.log(error);
-      res
-        .status(500)
-        .send({ message: "Error deleting notifications", success: false, error });
-    }
+router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body.userId });
+    user.seenNotifications = [];
+    user.unseenNotifications = [];
+    const updatedUser = await user.save();
+    updatedUser.password = "";
+    res.status(200).send({
+      message: "All notification is deleted",
+      success: true,
+      data: updatedUser,
+    });
+    await User.findByIdAndUpdate(user._id, {
+      unseenNotifications,
+      seenNotifications,
+    });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .send({ message: "Error deleting notifications", success: false, error });
   }
-);
+});
 router.post(
   "/mark-all-notifications-as-read",
   authMiddleware,
@@ -170,7 +171,11 @@ router.post(
       console.log(error);
       res
         .status(500)
-        .send({ message: "Error marking the notifications", success: false, error });
+        .send({
+          message: "Error marking the notifications",
+          success: false,
+          error,
+        });
     }
   }
 );
