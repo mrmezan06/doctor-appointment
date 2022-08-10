@@ -38,7 +38,9 @@ function ProtectedRoute(props) {
     if (!user) {
       getUser();
     }
-  }, );
+  },
+  // [user, reloadUser]
+  );
 
   if (localStorage.getItem("token")) {
     // For full protection you need to check if the token is expired / valid
