@@ -84,7 +84,16 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
 router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
   try {
     const newDoctor = new Doctor({ ...req.body, status: "pending" });
-    
+    // Need to check whetther the User has already any pending or inprogress or approved doctor account
+    // if yes then return error message
+    const doctor = await Doctor.findOne({ user: req.body.user });
+    if (doctor) {
+      const status = doctor.status;
+      return res
+        .status(200)
+        .send({ message: `You already have ${status=="approved"?"an":"a"} ${status} doctor account`, success: false });
+    }
+    // if no then save the doctor account
     await newDoctor.save();
     const adminUser = await User.findOne({ isAdmin: true });
     const unseenNotifications = adminUser.unseenNotifications;
