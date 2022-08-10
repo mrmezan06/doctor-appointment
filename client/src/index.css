@@ -36,6 +36,17 @@ label {
     width: max-content !important;
 }
 
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.button-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .ant-picker-input input {
     border: none !important;
 }
@@ -123,6 +134,9 @@ label {
 
 .authentication-form {
     width: 400px;
+    box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5),
+    0 10px 10px rgba(0, 0, 0, 0.627),
+    0 15px 20px rgba(0, 0, 0, 0.4);
 }
 
 .authentication .card-title {

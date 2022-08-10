@@ -44,8 +44,12 @@ const Register = () => {
           <Form.Item label="Password" name='password'>
             <Input placeholder='Password' type="password" />
           </Form.Item>
-          <Button className='primary-button my-2' htmlType='submit'>Register</Button>
+          <div className="button-flex">
+          <Button className='primary-button mx-5' htmlType='submit'>Register</Button>
+          </div>
+          <div className="link">
           <Link to='/login' className='anchor mt-2'>CLICK HERE TO LOGIN</Link>
+          </div>
         </Form>
       </div>
     </div>
