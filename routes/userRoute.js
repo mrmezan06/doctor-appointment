@@ -7,7 +7,6 @@ const jwt = require("jsonwebtoken");
 
 const authMiddleware = require("../middlewares/authMiddleware");
 
-
 router.post("/register", async (req, res) => {
   try {
     const userExists = await User.findOne({ email: req.body.email });
@@ -70,34 +69,38 @@ router.post("/get-user-info-by-id", authMiddleware, async (req, res) => {
       return res.status(200).send({
         success: true,
         data: {
-          ...user._doc, password: ''
+          ...user._doc,
+          password: "",
         },
       });
     }
   } catch (error) {
-    console.log("UserRoute GetUSer",error);
+    console.log("UserRoute GetUSer", error);
     res
       .status(500)
       .send({ message: "Error getting user info", success: false, error });
   }
 });
-router.post("/apply-doctor-account", authMiddleware ,async (req, res) => {
+router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
   try {
-    const newDoctor = new Doctor({...req.body, status: 'pending'});
+    const newDoctor = new Doctor({ ...req.body, status: "pending" });
+    
     await newDoctor.save();
-    const adminUser = await User.findOne({ isAdmin: true});
+    const adminUser = await User.findOne({ isAdmin: true });
     const unseenNotifications = adminUser.unseenNotifications;
     unseenNotifications.push({
-      type: 'new-doctor-request',
+      type: "new-doctor-request",
       message: `${newDoctor.firstName} ${newDoctor.lastName} has applied for a doctor account`,
       data: {
         doctorId: newDoctor._id,
-        name: newDoctor.firstName + ' ' + newDoctor.lastName
+        name: newDoctor.firstName + " " + newDoctor.lastName,
       },
-      onClickPath: '/admin/doctors'
+      onClickPath: "/admin/doctors",
     });
     await User.findByIdAndUpdate(adminUser._id, { unseenNotifications });
-    res.status(200).send({ message: 'Doctor account applied successfully', success: true });
+    res
+      .status(200)
+      .send({ message: "Doctor account applied successfully", success: true });
   } catch (error) {
     console.log(error);
     res
@@ -105,5 +108,62 @@ router.post("/apply-doctor-account", authMiddleware ,async (req, res) => {
       .send({ message: "Error applying doctor", success: false, error });
   }
 });
+router.post(
+  "/delete-all-notifications",
+  authMiddleware,
+  async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.body.userId });
+      user.seenNotifications = [];
+      user.unseenNotifications = [];
+      const updatedUser = await user.save();
+      updatedUser.password = "";
+      res.status(200).send({
+        message: "All notification is deleted",
+        success: true,
+        data: updatedUser,
+      });
+      await User.findByIdAndUpdate(user._id, {
+        unseenNotifications,
+        seenNotifications,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .send({ message: "Error deleting notifications", success: false, error });
+    }
+  }
+);
+router.post(
+  "/mark-all-notifications-as-read",
+  authMiddleware,
+  async (req, res) => {
+    try {
+      const user = await User.findOne({ _id: req.body.userId });
+      const unseenNotifications = user.unseenNotifications;
+      const seenNotifications = user.seenNotifications;
+      seenNotifications.push(...unseenNotifications);
+      user.unseenNotifications = [];
+      user.seenNotifications = seenNotifications;
+      const updatedUser = await user.save();
+      updatedUser.password = "";
+      res.status(200).send({
+        message: "Notifications marked as read",
+        success: true,
+        data: updatedUser,
+      });
+      await User.findByIdAndUpdate(user._id, {
+        unseenNotifications,
+        seenNotifications,
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(500)
+        .send({ message: "Error marking the notifications", success: false, error });
+    }
+  }
+);
 
 module.exports = router;
