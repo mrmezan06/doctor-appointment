@@ -86,9 +86,14 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
     const newDoctor = new Doctor({ ...req.body, status: "pending" });
     // Need to check whetther the User has already any pending or inprogress or approved doctor account
     // if yes then return error message
-    const doctor = await Doctor.findOne({ user: req.body.user });
-    if (doctor) {
-      const status = doctor.status;
+    //console.log('User', req.body.userId)
+    const doctor = await Doctor.find({ userId: req.body.userId });
+    // Test if doctor exists
+    //console.log("Doctor", doctor.length);
+    if (doctor.length != 0) {
+      const status = doctor[0].status;
+      // Because it is an Array
+      // console.log("Doctor", doctor);
       return res
         .status(200)
         .send({
@@ -125,19 +130,17 @@ router.post("/apply-doctor-account", authMiddleware, async (req, res) => {
 router.post("/delete-all-notifications", authMiddleware, async (req, res) => {
   try {
     const user = await User.findOne({ _id: req.body.userId });
-    user.seenNotifications = [];
-    user.unseenNotifications = [];
-    const updatedUser = await user.save();
-    updatedUser.password = "";
+    const seenNotifications = [];
+    await User.findByIdAndUpdate(user._id, {
+      seenNotifications,
+    });
     res.status(200).send({
       message: "All notification is deleted",
       success: true,
-      data: updatedUser,
+      data: user,
     });
-    await User.findByIdAndUpdate(user._id, {
-      unseenNotifications,
-      seenNotifications,
-    });
+    // Need an Refresh for Showing Updated Notifications
+    
   } catch (error) {
     console.log(error);
     res
@@ -151,17 +154,17 @@ router.post(
   async (req, res) => {
     try {
       const user = await User.findOne({ _id: req.body.userId });
-      const unseenNotifications = user.unseenNotifications;
-      const seenNotifications = user.seenNotifications;
+      var unseenNotifications = user.unseenNotifications;
+      var seenNotifications = user.seenNotifications;
       seenNotifications.push(...unseenNotifications);
-      user.unseenNotifications = [];
-      user.seenNotifications = seenNotifications;
-      const updatedUser = await user.save();
-      updatedUser.password = "";
+      unseenNotifications = [];
+      // user.seenNotifications = seenNotifications;
+      // const updatedUser = await user.save();
+      // updatedUser.password = "";
       res.status(200).send({
         message: "Notifications marked as read",
         success: true,
-        data: updatedUser,
+        data: user,
       });
       await User.findByIdAndUpdate(user._id, {
         unseenNotifications,

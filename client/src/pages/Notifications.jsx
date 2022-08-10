@@ -23,6 +23,7 @@ function Notifications() {
             if(response.data.success){
                 toast.success(response.data.message);
                 dispatch(setUser(response.data.data));
+                window.location.reload();
               }else {
               toast.error(response.data.message);
             }
@@ -42,6 +43,7 @@ function Notifications() {
             if(response.data.success){
                 toast.success(response.data.message);
                 dispatch(setUser(response.data.data));
+                window.location.reload();
               }else {
               toast.error(response.data.message);
             }
