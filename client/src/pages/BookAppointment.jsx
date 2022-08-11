@@ -15,6 +15,7 @@ function BookAppointment() {
   const { user } = useSelector((state) => state.user);
 
   const [isAvailable, setIsAvailable] = useState(false);
+  const [isCheck, setIsCheck] = useState(true);
   const [date, setDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
 
@@ -42,12 +43,44 @@ function BookAppointment() {
     try {
         dispatch(showLoading());
         const res = await axios.post(
-          "/api/doctor/book-appointment",
+          "/api/user/book-appointment",
           { 
             doctorId: params.doctorId,
             userId: user._id,
+            doctorInfo: doctor,
+            userInfo: user,
             date: date,
-            selectedTime: selectedTime
+            time: selectedTime
+         },
+          {
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+          }
+        );
+        dispatch(hideLoading());
+        if (res.data.success) {
+          toast.success(res.data.message);
+          setIsCheck(true);
+          setIsAvailable(false);
+        }else {
+          setIsCheck(false);
+          setIsAvailable(true);
+          toast.error(res.data.message);
+        }
+      } catch (error) {
+        toast.error('Error booking appointment');
+        dispatch(hideLoading());
+      }
+  }
+
+  const checkAvailability = async () => {
+    try {
+        dispatch(showLoading());
+        const res = await axios.post(
+          "/api/user/check-booking-availability",
+          { 
+            doctorId: params.doctorId,
+            date: date,
+            time: selectedTime
          },
           {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -56,8 +89,16 @@ function BookAppointment() {
         dispatch(hideLoading());
         if (res.data.success) {
           toast.success(res.data.message)
+          setIsAvailable(true);
+          setIsCheck(false);
+        }else {
+          setIsAvailable(false);
+          setIsCheck(true);
+          toast.error(res.data.message)
         }
       } catch (error) {
+        setIsAvailable(false);
+        setIsCheck(true);
         toast.error('Error booking appointment');
         dispatch(hideLoading());
       }
@@ -90,25 +131,30 @@ function BookAppointment() {
                 <DatePicker
                   format="DD-MM-YYYY"
                   onChange={(value) =>
-                    setDate(moment(value).format("DD-MM-YYYY"))
+                    {
+                      setDate(moment(value).format("DD-MM-YYYY"));
+                      setIsCheck(true);
+                      setIsAvailable(false);
+                    }
                   }
                 />
-                <TimePicker.RangePicker format="HH:mm" className="mt-3"
+                <TimePicker format="HH:mm" className="mt-3"
                 onChange={(values) =>
-                    setSelectedTime([
-                        moment(values[0]).format("HH:mm"),
-                        moment(values[1]).format("HH:mm"),
-
-                    ])
+                    {
+                      setSelectedTime(moment(values).format("HH:mm"));
+                      setIsCheck(true);
+                      setIsAvailable(false);
+                    }
+                    
                   }
                 />
                 <div className="button-flex flex-column">
-                  <Button type="primary" className="primary-button mt-3">
+                  {isCheck && <Button type="primary" className="primary-button mt-3" onClick={checkAvailability}>
                     Check Availability
-                  </Button>
-                  <Button type="primary" className="primary-button mt-3" onClick={bookNow}>
+                  </Button>}
+                  {isAvailable && <Button type="primary" className="primary-button mt-3" onClick={bookNow}>
                     Book Now
-                  </Button>
+                  </Button>}
                 </div>
               </div>
             </Col>
