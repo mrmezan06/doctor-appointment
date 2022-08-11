@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../../redux/alertsSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { Button, Col, Form, Input, Row } from "antd";
+import { Button, Col, Form, Input, Row, TimePicker } from "antd";
+import moment from 'moment';
 
 function Profile() {
   const dispatch = useDispatch();
@@ -23,6 +24,10 @@ function Profile() {
         {
           ...values,
           userId: user._id,
+          timings: [
+            moment(values.timings[0]).format('HH:mm'),
+            moment(values.timings[1]).format('HH:mm'),
+        ]
         },
         {
           headers: {
@@ -74,7 +79,12 @@ function Profile() {
       {/* {doctor && <DoctorForm onFinish={onFinish} initval={doctor}/>} */}
       {/* {doctor!== null ? console.log(doctor) : console.log('no doctor')} */}
       {doctor && (
-        <Form layout="vertical" onFinish={onFinish} initialValues={doctor}>
+        <Form layout="vertical" onFinish={onFinish} initialValues={
+            {...doctor, timings: [
+                moment(doctor.timings[0], 'HH:mm'),
+                moment(doctor.timings[1], 'HH:mm'),
+            ]}
+        }>
         <div className="card-title">Personal Information</div>
         <Row gutter={20}>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -165,16 +175,16 @@ function Profile() {
               />
             </Form.Item>
           </Col>
-          {/* <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item
               required
               label="Working Hour"
               name="timings"
               rules={[{ required: true }]}
             >
-              <TimePicker.RangePicker />
+              <TimePicker.RangePicker format="HH:mm" />
             </Form.Item>
-          </Col> */}
+          </Col>
         </Row>
         <div className="d-flex justify-content-end">
           <Button className="primary-button" htmlType="submit">
