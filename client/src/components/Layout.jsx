@@ -82,12 +82,16 @@ function Layout({ children }) {
   // }
   // Its always refreshing so I need to find Something Else
   // That will find out in after Login to refresh the page
+  const role = user?.isAdmin ? 'Admin' : user?.isDoctor ? 'Doctor' : 'User';
   return (
     <div className="main">
       <div className="d-flex layout">
         <div className="sidebar">
           <div className="sidebar-header">
             <h1 className="logo">DA</h1>
+            <div className="role">
+              Role : <span>{role}</span>
+            </div>
           </div>
           <div className="menu">
             {menuTobBeRendered.map((menu) => {
