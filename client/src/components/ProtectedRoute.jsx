@@ -39,7 +39,7 @@ function ProtectedRoute(props) {
       getUser();
     }
   },
-  // [user, reloadUser]
+  // [user]
   );
 
   if (localStorage.getItem("token")) {

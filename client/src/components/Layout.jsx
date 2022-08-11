@@ -55,7 +55,25 @@ function Layout({ children }) {
     },
   ];
 
-  const menuTobBeRendered = user?.isAdmin ? adminMenu : userMenu;
+  const doctorMenu = [
+    {
+      name: "Home",
+      path: "/",
+      icon: "ri-home-line",
+    },
+    {
+      name: "Appointments",
+      path: "/appointments",
+      icon: "ri-file-list-line",
+    },
+    {
+      name: "Profile",
+      path: `/doctor/profile/${user?._id}`,
+      icon: "ri-user-line",
+    },
+  ];
+
+  const menuTobBeRendered = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;
   // Refresh the page when the user Logs in
   // var c = 1;
   // if (location.pathname === "/" && c) {
