@@ -48,4 +48,25 @@ router.post("/get-doctor-info-by-user-id", authMiddleware, async (req, res) => {
     }
   });
 
+  router.post("/get-doctor-info-by-id", authMiddleware, async (req, res) => {
+    try {
+      const doctor = await Doctor.findOne({ _id: req.body.doctorId });
+      if (!doctor) {
+        return res
+          .status(200)
+          .send({ message: "Doctor does not exist", success: false });
+      } else {
+        return res.status(200)
+        .send({ message: "Doctor info fetched successfully",
+         success: true, data: doctor
+         });
+      }
+    } catch (error) {
+    //   console.log("UserRoute GetUSer", error);
+      res
+        .status(500)
+        .send({ message: "Error getting doctor info", success: false, error });
+    }
+  });
+
   module.exports = router;
