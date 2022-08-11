@@ -182,5 +182,22 @@ router.post(
     }
   }
 );
+router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
+  try {
+    const doctors = await Doctor.find({status: "approved"});
+    res.status(200).send({
+      message: "Doctors fetched successfully",
+      success: true,
+      data: doctors,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error getting doctors",
+      success: false,
+      error,
+    });
+  }
+});
 
 module.exports = router;
