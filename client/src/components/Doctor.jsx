@@ -5,7 +5,7 @@ function Doctor({ doctor }) {
   const navigate = useNavigate();
   return (
     <div
-      className="card p-2"
+      className="card p-2 mt-3"
       onClick={() => navigate(`/book-appointment/${doctor._id}`)}
     >
       <div className="card-title">
