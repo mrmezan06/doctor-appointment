@@ -95,26 +95,34 @@ function DoctorsList() {
         <div className="d-flex">
           {record.status === "pending" && (
             <h1
-              className="anchor"
+              className="anchor mx-3"
               onClick={() => changeDoctorStatus(record, "approved")}
             >
               Approve
             </h1>
           )}
+          {record.status === "pending" && (
+            <h1
+              className="anchor"
+              onClick={() => changeDoctorStatus(record, "rejected")}
+            >
+              Reject
+            </h1>
+          )}
           {record.status === "approved" && (
             <h1
               className="anchor"
-              onClick={() => changeDoctorStatus(record, "blocked")}
+              onClick={() => changeDoctorStatus(record, "rejected")}
             >
-              Blocked
+              Reject
             </h1>
           )}
-          {record.status === "blocked" && (
+          {record.status === "rejected" && (
             <h1
               className="anchor"
               onClick={() => changeDoctorStatus(record, "approved")}
             >
-              Unblocked
+              Approve
             </h1>
           )}
         </div>

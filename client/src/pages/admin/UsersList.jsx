@@ -40,7 +40,7 @@ function UsersList() {
   const columns = [
     {
       title: 'Name',
-      dataIndex: 'name',
+      dataIndex: 'fullName',
     },
     {
       title: 'Email',

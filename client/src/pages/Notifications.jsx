@@ -52,6 +52,9 @@ function Notifications() {
             toast.error('Something went wrong');
           }
     }
+
+
+
   return (
     <Layout>
         <div className='page-title'>Notifications</div>

@@ -75,10 +75,10 @@ function DoctorAppointments() {
     },
     {
       title: "Patient",
-      dataIndex: "name",
+      dataIndex: "fullName",
       render: (text, record) => (
         <div className="normal-text">
-          {record.userInfo.name}
+          {record.userInfo.fullName}
         </div>
       ),
     },

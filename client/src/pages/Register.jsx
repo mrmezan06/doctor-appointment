@@ -12,7 +12,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onFinish = async(values) => {
-    // console.log('Received values of form: ', values);
+    console.log('Received values of form: ', values);
     try {
       dispatch(showLoading());
       const response = await axios.post('/api/user/register', values);
@@ -35,8 +35,8 @@ const Register = () => {
       <div className="authentication-form card p-3">
         <h1 className='card-title'>Nice To Meet You</h1>
         <Form layout='vertical' onFinish={onFinish}>
-          <Form.Item label="Name" name='name'>
-            <Input placeholder='Name' />
+          <Form.Item label="Full Name" name='fullName'>
+            <Input placeholder='Full Name' />
           </Form.Item>
           <Form.Item label="Email" name='email'>
             <Input placeholder='Email' />

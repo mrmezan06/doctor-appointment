@@ -25,7 +25,7 @@ router.get("/get-all-doctors", authMiddleware, async (req, res) => {
 });
 router.get("/get-all-users", authMiddleware, async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({isAdmin: false, isDoctor: false});
     res.status(200).send({
       message: "Users fetched successfully",
       success: true,

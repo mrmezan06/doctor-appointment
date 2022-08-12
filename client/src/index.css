@@ -36,6 +36,18 @@ label {
     width: max-content !important;
 }
 
+.profile-button {
+    background-color: #005555 !important;
+    border-color: #005555 !important;
+    height: 40px !important;
+    width: 100% !important;
+    color: #fff !important;
+    font-size: 16px !important;
+    text-transform: uppercase;
+    width: 40% !important;
+    margin-top: 40px !important;
+}
+
 .link {
     display: flex;
     align-items: center;

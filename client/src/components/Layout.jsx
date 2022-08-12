@@ -27,7 +27,7 @@ function Layout({ children }) {
     },
     {
       name: "Profile",
-      path: "/profile",
+      path: `/user/profile/${user?._id}`,
       icon: "ri-user-line",
     },
   ];
@@ -50,7 +50,7 @@ function Layout({ children }) {
     },
     {
       name: "Profile",
-      path: "/profile",
+      path: `/user/profile/${user?._id}`,
       icon: "ri-user-line",
     },
   ];
@@ -137,8 +137,8 @@ function Layout({ children }) {
               <Badge count={user?.unseenNotifications.length} onClick={()=>navigate('/notifications')}>
                 <i className="ri-notification-line header-action-icon px-1"></i>
               </Badge>
-              <Link className="anchor mx-3" to="/profile">
-                {user?.name}
+              <Link className="anchor mx-3" to={`/user/profile/${user?._id}`}>
+                {user?.fullName}
               </Link>
             </div>
           </div>

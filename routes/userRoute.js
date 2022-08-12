@@ -213,7 +213,7 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
     const unseenNotifications = user.unseenNotifications;
     unseenNotifications.push({
       type: "new-appointment-request",
-      message: `A new appointment request from ${req.body.userInfo.name}`,
+      message: `A new appointment request from ${req.body.userInfo.fullName}`,
       onClickPath: "/doctor/appointments",
     });
     await User.findByIdAndUpdate(req.body.doctorInfo.userId, { unseenNotifications });
@@ -243,13 +243,22 @@ router.post("/check-booking-availability", authMiddleware, async (req, res) => {
       time: { $gte: fromTime, $lte: toTime },
     });
     if (appointments.length > 0) {
+      //console.log(appointments.length);
+      if(appointments.status === "rejected"){
+        return res.status(200).send({
+          message: "Appointments are available",
+          success: true,
+        });
+      }else {
+        return res.status(200).send({
+          message: "Appointments are not available second else",
+          success: false,
+        });
+      }
+    }else{
+      //console.log(appointments);
       return res.status(200).send({
-        message: "Appointments are not available",
-        success: false,
-      });
-    }else {
-      return res.status(200).send({
-        message: "Appointments are available",
+        message: "Appointments are available first else",
         success: true,
       });
     }
@@ -280,4 +289,47 @@ router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
   }
 });
 
+router.post("/update-user-profile", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findOneAndUpdate({ _id: req.body.userId }, 
+      req.body);
+    if (!user) {
+      return res
+        .status(200)
+        .send({ message: "User does not exist", success: false });
+    } else {
+      return res.status(200)
+      .send({ message: "User info updated successfully",
+       success: true, data: user
+       });
+    }
+  } catch (error) {
+  //   console.log("UserRoute GetUSer", error);
+    res
+      .status(500)
+      .send({ message: "Error getting user info", success: false, error });
+  }
+});
+router.post("/get-user-info-by-user-id", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body.userId });
+    if (!user) {
+      return res
+        .status(200)
+        .send({ message: "User does not exist", success: false });
+    } else {
+      
+      return res.status(200)
+      .send({ message: "User info fetched successfully",
+       success: true,
+       data: user
+       });
+    }
+  } catch (error) {
+  //   console.log("UserRoute GetUSer", error);
+    res
+      .status(500)
+      .send({ message: "Error getting user info", success: false, error });
+  }
+});
 module.exports = router;
