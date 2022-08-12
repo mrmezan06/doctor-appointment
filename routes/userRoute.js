@@ -217,10 +217,10 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
       onClickPath: "/doctor/appointments",
     });
     await User.findByIdAndUpdate(req.body.doctorInfo.userId, { unseenNotifications });
-      res.status(200).send({
-        message: "Appointment booked successfully",
-        success: true,
-      });
+    res.status(200).send({
+      message: "Appointment booked successfully",
+      success: true,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -233,32 +233,49 @@ router.post("/book-appointment", authMiddleware, async (req, res) => {
 router.post("/check-booking-availability", authMiddleware, async (req, res) => {
   try {
     req.body.status = "pending";
-      const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
-      const fromTime = moment(req.body.time, "HH:mm").subtract(59, 'minutes').toISOString();
-      const toTime = moment(req.body.time, "HH:mm").add(59, 'minutes').toISOString();
-      const doctorId = req.body.doctorId;
-      const appointments = await Appointment.find({
-        doctorId,
-        date,
-        time: { $gte: fromTime, $lte: toTime },
+    const date = moment(req.body.date, "DD-MM-YYYY").toISOString();
+    const fromTime = moment(req.body.time, "HH:mm").subtract(59, 'minutes').toISOString();
+    const toTime = moment(req.body.time, "HH:mm").add(59, 'minutes').toISOString();
+    const doctorId = req.body.doctorId;
+    const appointments = await Appointment.find({
+      doctorId,
+      date,
+      time: { $gte: fromTime, $lte: toTime },
+    });
+    if (appointments.length > 0) {
+      return res.status(200).send({
+        message: "Appointments are not available",
+        success: false,
       });
-      if (appointments.length > 0) {
-        return res.status(200).send({
-          message: "Appointments are not available",
-          success: false,
-        });
-      }else {
-        return res.status(200).send({
-          message: "Appointments are available",
-          success: true,
-        });
-      }
+    }else {
+      return res.status(200).send({
+        message: "Appointments are available",
+        success: true,
+      });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send({
       message: "Error booking appointment",
       success: false,
       data: error
+    });
+  }
+});
+router.get("/get-appointments-by-user-id", authMiddleware, async (req, res) => {
+  try {
+    const appointments = await Appointment.find({ userId : req.body.userId });
+    res.status(200).send({
+      message: "Appointments fetched successfully",
+      success: true,
+      data: appointments,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Error getting appointments",
+      success: false,
+      error,
     });
   }
 });
