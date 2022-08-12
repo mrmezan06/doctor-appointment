@@ -63,7 +63,7 @@ function Notifications() {
                     </h1>
                 </div>
                 {user?.unseenNotifications.map((notification,index) => (
-                    <div className='card p-2' onClick={()=>navigate(notification.onClickPath)}>
+                    <div className='card p-2 mt-2' onClick={()=>navigate(notification.onClickPath)}>
                         <div className="d-flex align-items-center">
                         <div className="card-number">{index+1}</div>
                         <div className="card-text">
@@ -80,7 +80,7 @@ function Notifications() {
                     </h1>
                 </div>
                 {user?.seenNotifications.map((notification,index) => (
-                    <div className='card p-2' onClick={()=>navigate(notification.onClickPath)}>
+                    <div className='card p-2 mt-2' onClick={()=>navigate(notification.onClickPath)}>
                         <div className="d-flex align-items-center">
                         <div className="card-number">{index+1}</div>
                         <div className="card-text">
