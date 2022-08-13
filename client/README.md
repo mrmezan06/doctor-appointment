@@ -26,32 +26,71 @@
             - [x] Notification UI With Fixing Issues
             - [x] API for Doctors
             - [x] API for Users
-            - [ ] UI for Doctors LIST
-            - [ ] UI for Users List
+            - [x] UI for Doctors LIST
+            - [x] UI for Users List
+            - [x] UI for Users Profile
+            - [x] UI for Doctors Profile
+            - [x] UI for Users Profile Edit
+            - [x] UI for Doctors Profile Edit
+            - [x] UI for Users Profile Edit API
+            - [x] UI for Doctors Profile Edit API
+            - [x] UI for Users Profile API
+            - [x] UI for Doctors Profile API
+            - [x] UI for Admin Profile API
+            - [x] UI for Admin Profile
+            - [x] UI for Admin Profile Edit
+            - [x] UI for Admin Profile Edit API
+- [x] API
+    - [x] API for Doctors
+    - [x] API for Users
+    - [x] API for Admin
+    - [x] API for Notification
+- [x] UI
+    - [x] UI for Doctors LIST
+    - [x] UI for Users List
+    - [x] UI for Users Profile
+    - [x] UI for Doctors Profile
+    - [x] UI for Users Profile Edit
+    - [x] UI for Doctors Profile Edit
+    - [x] UI for Users Profile Edit API
+    - [x] UI for Doctors Profile Edit API
+    - [x] UI for Users Profile API
+    - [x] UI for Doctors Profile API
+    - [x] UI for Admin Profile API
+    - [x] UI for Admin Profile
+    - [x] UI for Admin Profile Edit
+    - [x] UI for Admin Profile Edit API
+- [x] Testing
+- [x] Deployment in Heroku
+    - [x] [Heroku](https://doctor-call-healthy.herokuapp.com/)
+    - [x] [Git](https://github.com/mrmezan06/doctor-appointment)
+    - [x] MongoDB - Google Link With mrmezan0@gmail.com
 
 - [x] Remix Icon
     - [x] [Remix Icon](https://remixicon.com/)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
-### `npm run build` fails to minify
+## Run The Server In Your Local Machine Only Client Configuration
+- [x] Clone the repository
+    - [x] [Git](https://github.com/mrmezan06/doctor-appointment/)
+    - [x] `cd client`
+- [x] Install the dependencies
+    - [x] npm install
+- [x] Run the server
+    - [x] npm start
+    - [x] First need to setup the server
+        - [x] `cd ..`
+        - [x] npm install
+        - [x] .env file
+        - [x] setup MongoDB_URL
+        - [x] setup JWT_SECRET
+        - [x] Run the server
+            - [x] nodemon server
+        - [x] Run the server in production mode
+            - [x] Go to the root level documentation of `README.md`
+                - [x] [README.md](https://github.com/mrmezan06/doctor-appointment/blob/main/README.md)
+            
+        
+- [x] Run the tests
+- [x] Deploy the server
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -16,7 +16,7 @@ app.use('/api/user', userRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/doctor', doctorRoute);
 
-
+/* Heroku Configuration */
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
     app.get('*', (req, res) => {
@@ -27,6 +27,8 @@ if(process.env.NODE_ENV === 'production') {
 const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
+
+/* End of Heroku Configuration */
 
 
 app.listen(port, () => console.log(`Node server started at port ${port}`));
