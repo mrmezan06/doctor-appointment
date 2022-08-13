@@ -102,8 +102,8 @@ function Layout({ children }) {
                     isActive && "active-menu-item"
                   }`}
                 >
-                  <i className={menu.icon}></i>
-                  {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
+                  
+                   <Link to={menu.path}><i className={menu.icon}></i>{collapsed !== true? menu.name : ''}</Link>
                 </div>
               );
             })}
@@ -115,8 +115,8 @@ function Layout({ children }) {
                 navigate("/login");
               }}
             >
-              <i className="ri-logout-box-line"></i>
-              {!collapsed && <Link to="/login">Logout</Link>}
+              
+              <Link to="/login"><i className="ri-logout-box-line"></i>{collapsed !== true?'Logout': ''}</Link>
             </div>
           </div>
         </div>

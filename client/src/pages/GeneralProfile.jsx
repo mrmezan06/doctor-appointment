@@ -80,9 +80,10 @@ function GeneralProfile() {
                   required
                   label="Email"
                   name="email"
+                  className="profile-label"
                   rules={[{ required: true }]}
                 >
-                  <Input type="text" placeholder="Email" />
+                  <Input type="text" placeholder="Email" className="profile-input" />
                 </Form.Item>
               </Col>
               <Col span={24}>
@@ -90,9 +91,10 @@ function GeneralProfile() {
                   required
                   label="Password"
                   name="password"
+                  className="profile-label"
                   rules={[{ required: true }]}
                 >
-                  <Input type="password" placeholder="Password" />
+                  <Input type="password" placeholder="Password" className="profile-input" />
                 </Form.Item>
               </Col>
             </Row>

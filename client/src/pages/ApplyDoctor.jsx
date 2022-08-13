@@ -49,8 +49,8 @@ function ApplyDoctor() {
       <hr />
       <Form layout="vertical" onFinish={onFinish}>
         <div className="card-title">Personal Information</div>
-        <Row gutter={20}>
-          <Col span={8} xs={24} sm={24} lg={8}>
+        <Row gutter={10}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="First Name"
@@ -60,7 +60,7 @@ function ApplyDoctor() {
               <Input type="text" placeholder="First Name" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={8}>
             <Form.Item
               required
               label="Last Name"
@@ -70,7 +70,7 @@ function ApplyDoctor() {
               <Input type="text" placeholder="Last Name" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="Phone Number"
@@ -80,7 +80,7 @@ function ApplyDoctor() {
               <Input type="text" placeholder="Phone Number" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="Website"
@@ -90,7 +90,7 @@ function ApplyDoctor() {
               <Input type="text" placeholder="Website" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="Address"
@@ -103,8 +103,8 @@ function ApplyDoctor() {
         </Row>
         <hr />
         <div className="card-title">Professional Information</div>
-        <Row gutter={20}>
-          <Col span={8} xs={24} sm={24} lg={8}>
+        <Row gutter={10}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="Specialization"
@@ -114,7 +114,7 @@ function ApplyDoctor() {
               <Input type="text" placeholder="Specialization" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={6}>
             <Form.Item
               required
               label="Experience"
@@ -124,7 +124,7 @@ function ApplyDoctor() {
               <Input placeholder="Experience" type="number" />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={12} xs={12} md={12} sm={12} lg={8}>
             <Form.Item
               required
               label="Fee Per Consultation"
@@ -138,7 +138,7 @@ function ApplyDoctor() {
               />
             </Form.Item>
           </Col>
-          <Col span={8} xs={24} sm={24} lg={8}>
+          <Col span={8} xs={12} md={12} sm={12} lg={8}>
             <Form.Item
               required
               label="Working Hour"

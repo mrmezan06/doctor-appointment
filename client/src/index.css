@@ -1,194 +1,560 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-    font-family: 'Montserrat', sans-serif !important;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 /* AntD Override */
 input {
-    border-radius: 0 !important;
-    border: 2px solid rgba(128, 128, 128, 0.5) !important;
-    height: 40px !important;
+  border-radius: 0 !important;
+  border: 2px solid rgba(128, 128, 128, 0.5) !important;
+  height: 40px !important;
 }
-input:focus, .ant-picker {
-    outline: none !important;
-    box-shadow: none !important;
-    border: 1px solid black !important;
+input:focus,
+.ant-picker {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid black !important;
 }
 
 label {
-    font-size: 16px !important;
-    color: black !important;
+  font-size: 16px !important;
+  color: black !important;
 }
 
 .ant-form-item {
-    margin: 10px 0 !important;
+  margin: 10px 0 !important;
 }
 
 .primary-button {
-    background-color: #005555 !important;
-    border-color: #005555 !important;
-    height: 40px !important;
-    width: 100% !important;
-    color: #fff !important;
-    font-size: 16px !important;
-    text-transform: uppercase;
-    width: max-content !important;
+  background-color: #005555 !important;
+  border-color: #005555 !important;
+  height: 40px !important;
+  width: 100% !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  width: max-content !important;
 }
 
 .profile-button {
-    background-color: #005555 !important;
-    border-color: #005555 !important;
-    height: 40px !important;
-    width: 100% !important;
-    color: #fff !important;
-    font-size: 16px !important;
-    text-transform: uppercase;
-    width: 40% !important;
-    margin-top: 40px !important;
+  background-color: #005555 !important;
+  border-color: #005555 !important;
+  height: 40px !important;
+  width: 100% !important;
+  color: #fff !important;
+  font-size: 16px !important;
+  text-transform: uppercase;
+  width: 40% !important;
+  margin-top: 40px !important;
 }
 
 .link {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .button-flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .ant-picker-input input {
-    border: none !important;
+  border: none !important;
 }
 
 .ant-picker {
-    border-radius: 0 !important;
-    border: 2px solid rgba(128, 128, 128, 0.5) !important;
-    height: 40px !important;
+  border-radius: 0 !important;
+  border: 2px solid rgba(128, 128, 128, 0.5) !important;
+  height: 40px !important;
 }
 
 /* Common Styling */
 
 .spinner-parent {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    opacity: 0.5;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }
 .ant-spin-dot {
-    width: 5rem;
-    height: 5rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .ant-spin-lg .ant-spin-dot i {
-    width: 40px;
-    height: 40px;
-    /* background-color: #fff !important; */
+  width: 40px;
+  height: 40px;
+  /* background-color: #fff !important; */
 }
 
 .page-title {
-    font-size: 25px;
-    color: rgba(0, 0, 0, 0.833);
-    font-weight: bold;
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.833);
+  font-weight: bold;
 }
 
 .card {
-    box-shadow: 0 0 2px gray;
-    border-radius: 0 !important;
-    cursor: pointer !important;
+  box-shadow: 0 0 2px gray;
+  border-radius: 0 !important;
+  cursor: pointer !important;
 }
 
-.card-number{
-    border-right: 2px solid rgba(128, 128, 128, 0.5) !important;
-    height: inherit !important;
-    margin-right: 10px !important;
-    text-align: center !important;
-    padding: 5px !important;
+.card-number {
+  border-right: 2px solid rgba(128, 128, 128, 0.5) !important;
+  height: inherit !important;
+  margin-right: 10px !important;
+  text-align: center !important;
+  padding: 5px !important;
 }
 .card-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.8);
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card-text {
-    font-size: 1.3rem;
-    color: rgba(0, 0, 0, 0.5);
+  font-size: 1.3rem;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .card-text b {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.65);
-    padding: 5px;
-    margin: 0;
-    margin-left: 30px;
-    text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 5px;
+  margin: 0;
+  margin-left: 30px;
+  text-align: left;
 }
-
 
 .card-data {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: rgba(0, 0, 0, 0.5);
-    padding: 5px;
-    margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  margin: 0;
 }
 .normal-text {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .black {
-    color: black;
-    border: 0.2px solid gray;
-    height: 1px;
-    width: 100%;
+  color: black;
+  border: 0.2px solid gray;
+  height: 1px;
+  width: 100%;
 }
 
 .anchor {
-    color: black !important;
-    text-decoration: underline ;
-    font-size: 16px !important;
-    cursor: pointer !important;
+  color: black !important;
+  text-decoration: underline;
+  font-size: 16px !important;
+  cursor: pointer !important;
 }
 
 .anchor:hover {
-    text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 
 /* Authentication Pages */
 
 .authentication {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #005555 !important;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #005555 !important;
 }
 
 .authentication-form {
-    width: 400px;
-    box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5),
-    0 10px 10px rgba(0, 0, 0, 0.627),
-    0 15px 20px rgba(0, 0, 0, 0.4);
+  width: 400px;
+  box-shadow: 0 5px 5px rgba(128, 128, 128, 0.5),
+    0 10px 10px rgba(0, 0, 0, 0.627), 0 15px 20px rgba(0, 0, 0, 0.4);
 }
 
 .authentication .card-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    background-color: orangered;
-    color: white;
-    max-width: max-content;
-    padding: 7px 15px;
-    margin-left: -40px;
-    border-bottom-left-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: orangered;
+  color: white;
+  max-width: max-content;
+  padding: 7px 15px;
+  margin-left: -40px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 300px) {
+  .header{
+    width: 100%;
+
+  }
+  body {
+    width: 100%;
+    overflow-x: visible;
+  }
+
+  .page-title {
+    font-size: 1rem;
+  }
+  
+  .card-title {
+      font-size: 0.65rem;
+      margin-bottom: 5px;
+  }
+  .card-text {
+    font-size: 0.5rem;
+  }
+  .card-text b {
+    font-size: 0.55rem;
+    padding: 2px;
+    margin: 0;
+  }
+  .ant-table-content {
+    overflow-x: scroll;
+  }
+  .ant-table-thead > tr > th {
+    font-size: 0.7rem;
+    height: 40px;
+    padding: 0 !important;
+    margin-left: 5px !important;
+  }
+
+  .ant-form-item {
+    margin: 0px !important;
+    padding: 0 !important;
+  }
+  .ant-form-item-required{
+    font-size: 0.6rem !important;
+  }
+  .ant-form-vertical .ant-form-item-label {
+    padding: 0 0 2px;
+    line-height: 1.2;
+  }
+  .ant-form-item-label {
+    font-size: 0.5rem !important;
+  }
+
+  .profile-label {
+    font-size: 0.8rem !important;
+  }
+
+  .ant-input {
+    padding: 2px 6px;
+    line-height: 1;
+  }
+  input {
+    height: 28px !important;
+    padding: 5px !important;
+    font-size: 0.6rem !important;
+  }
+
+  .profile-input {
+    height: 40px !important;
+  }
+
+  .ant-picker {
+    height: 28px !important;
+    padding: 1px 3px !important;
+  }
+
+  button.ant-btn.ant-btn-default.primary-button {
+    margin-top: 10px;
+    margin-right: 41%;
+  }
+
+
+  .profile-button {
+    margin-top: 20px !important;
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .header{
+    width: 100%;
+
+  }
+  body {
+    width: 100%;
+    overflow-x: visible;
+  }
+  
+  .card-title {
+      font-size: 0.75rem;
+      margin-bottom: 5px;
+  }
+  .card-text {
+    font-size: 0.6rem;
+  }
+  .card-text b {
+    font-size: 0.65rem;
+    padding: 2px;
+    margin: 0;
+  }
+  .ant-table-content {
+    overflow-x: scroll;
+  }
+  .ant-table-thead > tr > th {
+    font-size: 0.7rem;
+    height: 40px;
+    padding: 0 !important;
+    margin-left: 5px !important;
+  }
+
+  .ant-form-item {
+    margin: 0px !important;
+    padding: 0 !important;
+  }
+  .ant-form-item-required{
+    font-size: 0.7rem !important;
+  }
+  .ant-form-vertical .ant-form-item-label {
+    padding: 0 0 2px;
+    line-height: 1.2;
+  }
+  .ant-form-item-label {
+    font-size: 0.6rem !important;
+  }
+
+  .profile-label {
+    font-size: 0.8rem !important;
+  }
+
+  .ant-input {
+    padding: 2px 6px;
+    line-height: 1;
+  }
+  input {
+    height: 28px !important;
+    padding: 5px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .profile-input {
+    height: 40px !important;
+  }
+
+  .ant-picker {
+    height: 28px !important;
+    padding: 1px 3px !important;
+  }
+
+  button.ant-btn.ant-btn-default.primary-button {
+    margin-top: 10px;
+    margin-right: 41%;
+  }
+
+
+  .profile-button {
+    margin-top: 20px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .header{
+    width: 100%;
+
+  }
+  body {
+    width: 100%;
+    overflow-x: visible;
+  }
+  
+  .card-title {
+      font-size: 0.75rem;
+      margin-bottom: 5px;
+  }
+  .card-text {
+    font-size: 0.6rem;
+  }
+  .card-text b {
+    font-size: 0.65rem;
+    padding: 2px;
+    margin: 0;
+  }
+  .ant-table-thead > tr > th {
+    font-size: 0.7rem;
+    height: 40px;
+    padding: 0 !important;
+    margin-left: 5px !important;
+  }
+
+  .ant-form-item {
+    margin: 0px !important;
+    padding: 0 !important;
+  }
+  .ant-form-item-required{
+    font-size: 0.8rem !important;
+  }
+  .ant-form-vertical .ant-form-item-label {
+    padding: 0 0 2px;
+    line-height: 1.2;
+  }
+  .ant-form-item-label {
+    font-size: 0.7rem !important;
+  }
+
+  .profile-label {
+    font-size: 0.8rem !important;
+  }
+
+  .ant-input {
+    padding: 2px 6px;
+    line-height: 1;
+  }
+  input {
+    height: 28px !important;
+    padding: 5px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .profile-input {
+    height: 40px !important;
+  }
+
+  .ant-picker {
+    height: 28px !important;
+    padding: 1px 3px !important;
+  }
+
+  button.ant-btn.ant-btn-default.primary-button {
+    margin-top: 10px;
+    margin-right: 41%;
+  }
+
+
+  .profile-button {
+    margin-top: 20px !important;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+  .header{
+    width: 100%;
+  }
+  body {
+    width: 95%;
+  }
+    .card-text {
+        font-size: 0.7rem;
+      }
+      .card-text b {
+        font-size: 0.9rem;
+        padding: 2px;
+        margin: 0;
+      }
+
+      .ant-table-cell {
+        padding: 5px !important;
+        height: 40px !important;
+      }
+      .ant-form-item {
+        margin: 5px !important;
+        padding: 5px;
+      }
+
+      .ant-form-vertical .ant-form-item-label {
+        padding: 0 0 2px;
+        line-height: 1.2;
+      }
+      .ant-form-item-label {
+        font-size: 0.7rem !important;
+      }
+    
+      .profile-label {
+        font-size: 1rem !important;
+      }
+    
+      .ant-input {
+        padding: 2px 6px;
+        line-height: 1;
+      }
+      input {
+        height: 28px !important;
+        padding: 5px !important;
+        font-size: 0.9rem !important;
+      }
+    
+      .profile-input {
+        height: 40px !important;
+      }
+    
+      .ant-picker {
+        height: 28px !important;
+        padding: 1px 3px !important;
+      }
+    
+      button.ant-btn.ant-btn-default.primary-button {
+        margin-top: 45px;
+      }
+    
+      .profile-button {
+        margin-top: 20px !important;
+      }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .card-text {
+    font-size: 0.8rem;
+  }
+  .card-text b {
+    font-size: 1rem;
+    padding: 5px;
+    margin: 0;
+    margin-left: 20px;
+    text-align: left;
+  }
+  .ant-form-vertical .ant-form-item-label {
+    padding: 0 0 2px;
+    line-height: 1.2;
+  }
+  .ant-form-item-label {
+    font-size: 1rem;
+  }
+
+  .profile-label {
+    font-size: 1.3rem;
+  }
+
+  .ant-input {
+    padding: 2px 6px;
+    line-height: 1.2;
+  }
+  input {
+    height: 28px !important;
+    padding: 5px !important;
+    font-size: 1rem !important;
+  }
+
+  .profile-input {
+    height: 40px !important;
+  }
+
+  .ant-picker {
+    height: 28px !important;
+    padding: 1px 3px !important;
+  }
+
+  button.ant-btn.ant-btn-default.primary-button {
+    margin-top: -45px;
+  }
+
+  .profile-button {
+    margin-top: 20px !important;
+  }
 }
