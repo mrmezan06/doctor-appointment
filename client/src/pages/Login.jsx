@@ -46,7 +46,7 @@ const Login = () => {
             <Input placeholder='Password' type="password" />
           </Form.Item>
           <div className="button-flex">
-          <Button className='primary-button mx-5' htmlType='submit'>Login</Button>
+          <Button className='primary-button' htmlType='submit'>Login</Button>
           </div>
           <div className="link">
           <Link to='/register' className='anchor mt-2'>CLICK HERE TO REGISTER</Link>
