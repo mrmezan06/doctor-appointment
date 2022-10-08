@@ -1,7 +1,9 @@
 # Server
 
-## Server Configuration 
+## Server Configuration
+
 ### Node Modules
+
 - [x] Express
 - [x] jsonwebtoken
 - [x] bcrypt
@@ -12,22 +14,25 @@
 - [x] nodemon
 
 ### Database
+
 - [x] MongoDB
 
 ## Server Structure
+
 - [x] Node Server
 
-
 ## Deployment & Testing
+
 - [x] Testing
 - [x] Deployment in Heroku
-    - [x] [Heroku](https://doctor-call-healthy.herokuapp.com/)
-    - [x] [Git](https://github.com/mrmezan06/doctor-appointment)
-    - [x] MongoDB - Google Link With mrmezan0@gmail.com
+  - [x] [Heroku](https://doctor-call-healthy.herokuapp.com/)
+  - [x] [Git](https://github.com/mrmezan06/doctor-appointment)
+  - [x] MongoDB - Google Link With mrmezan0@gmail.com
 
 ## Heroku Configuration
+
 - [x] `Server.js`
-`    - [x] Below is the configuration for Heroku After Your Route`
+    ` - [x] Below is the configuration for Heroku After Your Route`
 <pre>
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
@@ -39,6 +44,7 @@ if(process.env.NODE_ENV === 'production') {
 const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => res.send('Hello World!'));
+
 </pre>
 - [x] `package.json`
 - [x] Below is the configuration for Heroku After ` "main": "index.js",`
@@ -48,9 +54,9 @@ app.get('/', (req, res) => res.send('Hello World!'));
     "npm": "8.13.2"
   },
   "scripts": {
-    "client-install": "npm install --prefix clinet",
+    "client-install": "npm install --prefix client",
     "server": "nodemon server.js",
-    "client": "npm start --prefix clinet",
+    "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
@@ -60,19 +66,18 @@ app.get('/', (req, res) => res.send('Hello World!'));
     - [x] `node_modules`
     - [x] If in gitignore .env is also is listed then remove from it otherwise MONGO_URL can't be found
 
-
-
 ## Run The Server In Your Local Machine
+
 - [x] Clone the repository
-    - [x] [Git](https://github.com/mrmezan06/doctor-appointment)
+  - [x] [Git](https://github.com/mrmezan06/doctor-appointment)
 - [x] Install the dependencies
-    - [x] npm install
+  - [x] npm install
 - [x] Set up .env
-    - [x] MONGO_URI=`YOUR_MONGO_URL\DATABASE_NAME`
-    - [x] JWT_SECRET=`YOUR_JWT_SECRET`
-    - [x] If Local MONGO_URI=`mongodb://127.0.0.1:27017/doctor-appointment`
+  - [x] MONGO_URI=`YOUR_MONGO_URL\DATABASE_NAME`
+  - [x] JWT_SECRET=`YOUR_JWT_SECRET`
+  - [x] If Local MONGO_URI=`mongodb://127.0.0.1:27017/doctor-appointment`
 - [x] Run the server
-    - [x] nodemon server
+  - [x] nodemon server
 - [x] Run the tests
 - [x] Deploy the server
 
@@ -95,8 +100,8 @@ app.get('/', (req, res) => res.send('Hello World!'));
 @media only screen and (min-width: 1200px) {...}
 </pre>
 
-
 ## Start Node server
+
 - [x] `nodemon server`
 
 ## Start React App
